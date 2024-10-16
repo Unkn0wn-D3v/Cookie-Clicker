@@ -6,30 +6,20 @@ var cheaterPunishment = Number(localStorage.getItem("cheaterPunishment"));
 var cookies = Number(localStorage.getItem("cookies"));
 var multiplier = Number(localStorage.getItem("multiplier"));
 var multiplierCost = Number(localStorage.getItem("multiplierCost"));
-var workers = 0;
+var workers = Number(localStorage.getItem("workers"));
 
 let adminButtonOne, adminButtonTwo;
 
-if (cookies == null) {
-  cookies = 0;
-}
-
-if (multiplier == null) {
-  multiplier = 1;
-}
-
-if (multiplierCost == null) {
-  multiplierCost = 100;
-}
+if (cookies == null) cookies = 0;
+if (multiplier == null) multiplier = 1;
+if (multiplierCost == null) multiplierCost = 100;
+if (cheaterPunishment == null) cheaterPunishment = 999999999;
+if (workers == null) workers = 0;
 
 if (cheater == null || cheater == "false") {
   cheater = false;
 } else if (cheater == "true") {
   cheater = true;
-}
-
-if (cheaterPunishment == null) {
-  cheaterPunishment = 999999999;
 }
 
 const cookieText = document.querySelector("#cookies");
@@ -188,5 +178,6 @@ window.addEventListener("DOMContentLoaded", () => {
     localStorage.setItem("multiplierCost", multiplierCost);
     localStorage.setItem("cheater", cheater);
     localStorage.setItem("cheaterPunishment", cheaterPunishment);
+    localStorage.setItem("workers", workers);
   });
 });
