@@ -6,6 +6,7 @@ var cheaterPunishment = Number(localStorage.getItem("cheaterPunishment"));
 var cookies = Number(localStorage.getItem("cookies"));
 var multiplier = Number(localStorage.getItem("multiplier"));
 var multiplierCost = Number(localStorage.getItem("multiplierCost"));
+var workers = 0;
 
 let adminButtonOne, adminButtonTwo;
 
@@ -120,7 +121,7 @@ window.addEventListener("DOMContentLoaded", () => {
       admin = false;
     }
 
-	  window.alert("All your data has been cleared");
+    window.alert("All your data has been cleared");
   });
 
   document.querySelector("#button4").addEventListener("click", () => {
