@@ -80,7 +80,7 @@ window.addEventListener("DOMContentLoaded", () => {
 
   multiplierButton.addEventListener("click", () => {
     if (cookies >= multiplierCost) {
-      multiplier = multiplier + 1;
+      multiplier = multiplier * 2;
       multiplierText.textContent = "Multiplier = " + multiplier + "x";
       cookies = cookies - multiplierCost;
       cookieText.textContent = "Cookies = " + cookies;
