@@ -3,8 +3,9 @@ var admin = false;
 var cheater = localStorage.getItem("cheater");
 var cheaterPunishment = Number(localStorage.getItem("cheaterPunishment"));
 
+var multiplier = 1;
 var cookies = Number(localStorage.getItem("cookies"));
-var multiplier = Number(localStorage.getItem("multiplier"));
+multiplier = Number(localStorage.getItem("multiplier"));
 var multiplierCost = Number(localStorage.getItem("multiplierCost"));
 var workers = Number(localStorage.getItem("workers"));
 
