@@ -85,7 +85,7 @@ window.addEventListener("DOMContentLoaded", () => {
       multiplierText.textContent = "Multiplier = " + multiplier + "x";
       cookies = cookies - multiplierCost;
       cookieText.textContent = "Cookies = " + cookies;
-      multiplierCost = Math.round(multiplierCost ^ 1.1);
+      multiplierCost = Math.round(multiplierCost ^ 1.5);
       multiplierButton.textContent =
         "+1 Multiplier(Costs " + multiplierCost + " cookies)";
     }
