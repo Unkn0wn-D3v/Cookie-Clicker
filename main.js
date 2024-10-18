@@ -3,7 +3,6 @@ var admin = false;
 var cheater = localStorage.getItem("cheater-1");
 var cheaterPunishment = Number(localStorage.getItem("cheaterPunishment-1"));
 
-var multiplier = 1;
 var cookies = Number(localStorage.getItem("cookies-1"));
 multiplier = Number(localStorage.getItem("multiplier-1"));
 var multiplierCost = Number(localStorage.getItem("multiplierCost-1"));
