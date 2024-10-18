@@ -87,7 +87,7 @@ window.addEventListener("DOMContentLoaded", () => {
       multiplierText.textContent = "Multiplier = " + multiplier + "x";
       cookies = cookies - multiplierCost;
       cookieText.textContent = "Cookies = " + cookies;
-      multiplierCost = multiplierCost * multiplierCost;
+      multiplierCost *= multiplierCost;
       multiplierButton.textContent =
         "+1 Multiplier(Costs " + multiplierCost + " cookies)";
     }
@@ -112,9 +112,8 @@ window.addEventListener("DOMContentLoaded", () => {
       if (adminButtonOne) adminButtonOne.remove();
       if (adminButtonTwo) adminButtonTwo.remove();
       admin = false;
+      window.alert("All your data has been cleared");
     }
-
-    window.alert("All your data has been cleared");
   });
 
   document.querySelector("#button4").addEventListener("click", () => {
