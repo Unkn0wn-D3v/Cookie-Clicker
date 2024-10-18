@@ -1,13 +1,13 @@
 var cancelled = false;
 var admin = false;
-var cheater = localStorage.getItem("cheater");
-var cheaterPunishment = Number(localStorage.getItem("cheaterPunishment"));
+var cheater = localStorage.getItem("cheater-1");
+var cheaterPunishment = Number(localStorage.getItem("cheaterPunishment-1"));
 
 var multiplier = 1;
-var cookies = Number(localStorage.getItem("cookies"));
-multiplier = Number(localStorage.getItem("multiplier"));
-var multiplierCost = Number(localStorage.getItem("multiplierCost"));
-var workers = Number(localStorage.getItem("workers"));
+var cookies = Number(localStorage.getItem("cookies-1"));
+multiplier = Number(localStorage.getItem("multiplier-1"));
+var multiplierCost = Number(localStorage.getItem("multiplierCost-1"));
+var workers = Number(localStorage.getItem("workers-1"));
 
 let adminButtonOne, adminButtonTwo;
 
@@ -45,7 +45,7 @@ window.addEventListener("DOMContentLoaded", () => {
       }
     }, 1);
   }
-  
+
   document.querySelector("#button").addEventListener("click", () => {
     var correctPassword = false;
     cancelled = false;
@@ -119,7 +119,7 @@ window.addEventListener("DOMContentLoaded", () => {
   document.querySelector("#button4").addEventListener("click", () => {
     var password = prompt("Enter password to acccess the admin buttons");
     var adminPassword = window.atob(
-      "dGhlbWl0b2Nob25kcmlhaXN0aGVwb3dlcmhvdXNlb2Z0aGVjZWxs"
+      "bWFzb253aWxsbmV2ZXJndWVzc3RoaXNwYXNzd29yZDE="
     );
 
     if (
@@ -175,11 +175,11 @@ window.addEventListener("DOMContentLoaded", () => {
   });
 
   window.addEventListener("beforeunload", function () {
-    localStorage.setItem("cookies", cookies);
-    localStorage.setItem("multiplier", multiplier);
-    localStorage.setItem("multiplierCost", multiplierCost);
-    localStorage.setItem("cheater", cheater);
-    localStorage.setItem("cheaterPunishment", cheaterPunishment);
-    localStorage.setItem("workers", workers);
+    localStorage.setItem("cookies-1", cookies);
+    localStorage.setItem("multiplier-1", multiplier);
+    localStorage.setItem("multiplierCost-1", multiplierCost);
+    localStorage.setItem("cheater-1", cheater);
+    localStorage.setItem("cheaterPunishment-1", cheaterPunishment);
+    localStorage.setItem("workers-1", workers);
   });
 });
