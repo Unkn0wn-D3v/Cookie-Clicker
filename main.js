@@ -8,6 +8,7 @@ var cookies = Number(localStorage.getItem("cookies-1"));
 multiplier = Number(localStorage.getItem("multiplier-1"));
 var multiplierCost = Number(localStorage.getItem("multiplierCost-1"));
 var workers = Number(localStorage.getItem("workers-1"));
+//var newDataReset = "false";
 
 let adminButtonOne, adminButtonTwo;
 
@@ -86,7 +87,7 @@ window.addEventListener("DOMContentLoaded", () => {
       multiplierText.textContent = "Multiplier = " + multiplier + "x";
       cookies = cookies - multiplierCost;
       cookieText.textContent = "Cookies = " + cookies;
-      multiplierCost = Math.round(multiplierCost ^ 1.5);
+      multiplierCost = Math.round(multiplierCost ** 1.5);
       multiplierButton.textContent =
         "+1 Multiplier(Costs " + multiplierCost + " cookies)";
     }
