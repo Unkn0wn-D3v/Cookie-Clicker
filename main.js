@@ -45,6 +45,7 @@ window.addEventListener("DOMContentLoaded", () => {
       }
     }, 1);
   }
+  
   document.querySelector("#button").addEventListener("click", () => {
     var correctPassword = false;
     cancelled = false;
