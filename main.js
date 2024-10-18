@@ -11,11 +11,11 @@ var workers = Number(localStorage.getItem("workers-1"));
 
 let adminButtonOne, adminButtonTwo;
 
-if (cookies == null) cookies = 0;
-if (multiplier == null) multiplier = 1;
-if (multiplierCost == null) multiplierCost = 100;
-if (cheaterPunishment == null) cheaterPunishment = 999999999;
-if (workers == null) workers = 0;
+if (cookies == null) {cookies = 0;}
+if (multiplier == null) {multiplier = 1;}
+if (multiplierCost == null) {multiplierCost = 100;}
+if (cheaterPunishment == null) {cheaterPunishment = 999999999;}
+if (workers == null) {workers = 0;}
 
 if (cheater == null || cheater == "false") {
   cheater = false;
