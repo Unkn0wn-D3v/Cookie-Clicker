@@ -1,5 +1,6 @@
 var cancelled = false;
 var admin = false;
+var cookieDebounce = false;
 var cheater = localStorage.getItem("cheater-1");
 var cheaterPunishment = Number(localStorage.getItem("cheaterPunishment-1"));
 
@@ -84,8 +85,15 @@ document.querySelector("#button").addEventListener("click", () => {
 });
 
 document.querySelector("#button1").addEventListener("click", () => {
-  cookies = cookies + 1 * multiplier;
-  cookieText.textContent = "Cookies = " + cookies;
+  if (cookieDebounce == false) {
+    cookieDebounce = true;
+    cookies = cookies + 1 * multiplier;
+    cookieText.textContent = "Cookies = " + cookies;
+
+    sleep(10).then(() => {
+      cookieDebounce = false;
+    });
+  }
 });
 
 multiplierButton.addEventListener("click", () => {
@@ -184,3 +192,7 @@ window.addEventListener("beforeunload", function () {
   localStorage.setItem("cheaterPunishment-1", cheaterPunishment);
   localStorage.setItem("workers-1", workers);
 });
+
+function sleep(ms) {
+  return new Promise((resolve) => setTimeout(resolve, ms));
+}
