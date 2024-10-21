@@ -1,7 +1,7 @@
 var cancelled = false;
 var admin = false;
 var cookieDebounce = false;
-var cookieCooldown = 50;
+var cookieCooldown = 25;
 var cheater = localStorage.getItem("cheater-1");
 var cheaterPunishment = Number(localStorage.getItem("cheaterPunishment-1"));
 
@@ -42,7 +42,7 @@ document.addEventListener("keydown", (event) => {
 
 document.addEventListener("keyup", (event) => {
   if (event.key == "Enter") {
-    cookieCooldown = 50;
+    cookieCooldown = 25;
   }
 });
 
