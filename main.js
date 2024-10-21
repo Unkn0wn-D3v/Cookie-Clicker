@@ -90,7 +90,7 @@ document.querySelector("#button1").addEventListener("click", () => {
     cookies = cookies + 1 * multiplier;
     cookieText.textContent = "Cookies = " + cookies;
 
-    sleep(10).then(() => {
+    sleep(100).then(() => {
       cookieDebounce = false;
     });
   }
