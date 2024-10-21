@@ -7,15 +7,24 @@ var cookies = Number(localStorage.getItem("cookies-1"));
 multiplier = Number(localStorage.getItem("multiplier-1"));
 var multiplierCost = Number(localStorage.getItem("multiplierCost-1"));
 var workers = Number(localStorage.getItem("workers-1"));
-//var newDataReset = "false";
 
 let adminButtonOne, adminButtonTwo;
 
-if (cookies == null) {cookies = 0;}
-if (multiplier == null) {multiplier = 1;}
-if (multiplierCost == null) {multiplierCost = 100;}
-if (cheaterPunishment == null) {cheaterPunishment = 999999999;}
-if (workers == null) {workers = 0;}
+if (cookies == null) {
+  cookies = 0;
+}
+if (multiplier == null || multiplier == 0) {
+  multiplier = 1;
+}
+if (multiplierCost == null || multiplierCost == 0) {
+  multiplierCost = 100;
+}
+if (cheaterPunishment == null) {
+  cheaterPunishment = 999999999;
+}
+if (workers == null) {
+  workers = 0;
+}
 
 if (cheater == null || cheater == "false") {
   cheater = false;
@@ -92,9 +101,7 @@ multiplierButton.addEventListener("click", () => {
 });
 
 document.querySelector("#button3").addEventListener("click", () => {
-  var boolean = window.confirm(
-    "Are you sure you want to clear all your data?"
-  );
+  var boolean = window.confirm("Are you sure you want to clear all your data?");
 
   if (boolean == true) {
     localStorage.clear();
@@ -120,10 +127,7 @@ document.querySelector("#button4").addEventListener("click", () => {
     "bWFzb253aWxsbmV2ZXJndWVzc3RoaXNwYXNzd29yZDE="
   );
 
-  if (
-    password == adminPassword &&
-    !document.querySelector("#adminButtonOne")
-  ) {
+  if (password == adminPassword && !document.querySelector("#adminButtonOne")) {
     admin = true;
     adminButtonOne = document.createElement("div");
     adminButtonOne.innerHTML = `<button id="adminButtonOne">Add cookies</button>`;
