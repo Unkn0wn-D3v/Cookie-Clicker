@@ -1,6 +1,7 @@
 var cancelled = false;
 var admin = false;
 var cookieDebounce = false;
+var cookieCooldown = 50;
 var cheater = localStorage.getItem("cheater-1");
 var cheaterPunishment = Number(localStorage.getItem("cheaterPunishment-1"));
 
@@ -32,6 +33,18 @@ if (cheater == null || cheater == "false") {
 } else if (cheater == "true") {
   cheater = true;
 }
+
+document.addEventListener("keydown", (event) => {
+  if (event.key == "Enter") {
+    cookieCooldown = 100;
+  }
+});
+
+document.addEventListener("keyup", (event) => {
+  if (event.key == "Enter") {
+    cookieCooldown = 50;
+  }
+});
 
 const cookieText = document.querySelector("#cookies");
 const multiplierText = document.querySelector("#multiplier");
