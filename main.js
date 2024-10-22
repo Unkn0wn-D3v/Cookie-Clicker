@@ -239,6 +239,7 @@ adminButton.addEventListener("click", () => {
       workerCost = workerCost * 2;
       workerText.textContent = "Workers: " + workers;
       workerButton.textContent = "+1 Worker(Costs " + workerCost + " cookies)";
+      cookieText.textContent = "Cookies = " + cookies;
     }
   });
 });
