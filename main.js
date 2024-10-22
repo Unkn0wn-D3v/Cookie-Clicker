@@ -70,7 +70,8 @@ cookieText.textContent = "Cookies = " + cookies;
 multiplierText.textContent = "Multiplier = " + multiplier + "x";
 multiplierButton.textContent =
   "+1 Multiplier(Costs " + multiplierCost + " cookies)";
-workerText.textContent = "+1 Worker(Costs " + workerCost + " cookies)";
+workerButton.textContent = "+1 Worker(Costs " + workerCost + " cookies)";
+workerText.textContent = "Workers = " + workers;
 
 //"Cheater" check
 if (cheater == true) {
