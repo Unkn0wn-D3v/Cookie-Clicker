@@ -1,3 +1,4 @@
+//Variables/data loading
 var cancelled = false;
 var admin = false;
 var cookieDebounce = false;
@@ -6,12 +7,14 @@ var cheater = localStorage.getItem("cheater-1");
 var cheaterPunishment = Number(localStorage.getItem("cheaterPunishment-1"));
 
 var cookies = Number(localStorage.getItem("cookies-1"));
-multiplier = Number(localStorage.getItem("multiplier-1"));
+var multiplier = Number(localStorage.getItem("multiplier-1"));
 var multiplierCost = Number(localStorage.getItem("multiplierCost-1"));
 var workers = Number(localStorage.getItem("workers-1"));
+var workerCost = Number(localStorage.getItem("workerCost-1"));
 
 let adminButtonOne, adminButtonTwo;
 
+//New player check
 if (cookies == null) {
   cookies = 0;
 }
@@ -28,12 +31,17 @@ if (workers == null) {
   workers = 0;
 }
 
+if (workerCost == null || workerCost == 0) {
+  workerCost = 250;
+}
+
 if (cheater == null || cheater == "false") {
   cheater = false;
 } else if (cheater == "true") {
   cheater = true;
 }
 
+//Cookie click cooldown
 document.addEventListener("keydown", (event) => {
   if (event.key == "Enter") {
     cookieCooldown = 100;
@@ -46,15 +54,25 @@ document.addEventListener("keyup", (event) => {
   }
 });
 
+//Document elements(Buttons, text, etc.)
 const cookieText = document.querySelector("#cookies");
 const multiplierText = document.querySelector("#multiplier");
 const multiplierButton = document.querySelector("#button2");
+const workerButton = document.querySelector("#button5");
+const workerText = document.querySelector("#workers");
+const epilepsyButton = document.querySelector("#button");
+const cookieButton = document.querySelector("#button1");
+const clearDataButton = document.querySelector("#button3");
+const adminButton = document.querySelector("#button4");
 
+//Setting the content of buttons and text
 cookieText.textContent = "Cookies = " + cookies;
 multiplierText.textContent = "Multiplier = " + multiplier + "x";
 multiplierButton.textContent =
   "+1 Multiplier(Costs " + multiplierCost + " cookies)";
+workerText.textContent = "+1 Worker(Costs " + workerCost + " cookies)";
 
+//"Cheater" check
 if (cheater == true) {
   window.alert(
     "You really thought you could get away? Your losses have been doubled."
@@ -68,7 +86,20 @@ if (cheater == true) {
   }, 1);
 }
 
-document.querySelector("#button").addEventListener("click", () => {
+//Worker functionality
+setInterval(function () {
+  if (workers != 0 || workers != null) {
+    var workerProfit = workers * (1 * multiplier);
+    cookies += workerProfit;
+  }
+}, 500);
+
+/*
+BUTTONS START HERE
+*/
+
+//Epilepsy button
+epilepsyButton.addEventListener("click", () => {
   var correctPassword = false;
   cancelled = false;
   document.body.style.background = "white";
@@ -97,7 +128,8 @@ document.querySelector("#button").addEventListener("click", () => {
   }
 });
 
-document.querySelector("#button1").addEventListener("click", () => {
+//Cookie button
+cookieButton.addEventListener("click", () => {
   if (cookieDebounce == false) {
     cookieDebounce = true;
     cookies = cookies + 1 * multiplier;
@@ -109,6 +141,7 @@ document.querySelector("#button1").addEventListener("click", () => {
   }
 });
 
+//Multiplier button
 multiplierButton.addEventListener("click", () => {
   if (cookies >= multiplierCost) {
     multiplier = multiplier * 2;
@@ -121,7 +154,8 @@ multiplierButton.addEventListener("click", () => {
   }
 });
 
-document.querySelector("#button3").addEventListener("click", () => {
+//Clear data button
+clearDataButton.addEventListener("click", () => {
   var boolean = window.confirm("Are you sure you want to clear all your data?");
 
   if (boolean == true) {
@@ -142,7 +176,8 @@ document.querySelector("#button3").addEventListener("click", () => {
   }
 });
 
-document.querySelector("#button4").addEventListener("click", () => {
+//Admin button
+adminButton.addEventListener("click", () => {
   var password = prompt("Enter password to acccess the admin buttons");
   var adminPassword = window.atob(
     "bWFzb253aWxsbmV2ZXJndWVzc3RoaXNwYXNzd29yZDE="
@@ -195,8 +230,23 @@ document.querySelector("#button4").addEventListener("click", () => {
       window.alert("Incorrect password!");
     }
   }
+
+  //Worker button
+  workerButton.addEventListener("click", () => {
+    if (cookies >= workerCost) {
+      workers += 1;
+      cookies -= workerCost;
+      workerCost = workerCost * 2;
+      workerText.textContent;
+    }
+  });
 });
 
+/*
+BUTTONS END HERE
+*/
+
+//Data saving
 window.addEventListener("beforeunload", function () {
   localStorage.setItem("cookies-1", cookies);
   localStorage.setItem("multiplier-1", multiplier);
@@ -204,8 +254,10 @@ window.addEventListener("beforeunload", function () {
   localStorage.setItem("cheater-1", cheater);
   localStorage.setItem("cheaterPunishment-1", cheaterPunishment);
   localStorage.setItem("workers-1", workers);
+  localStorage.setItem("workerCost-1", workerCost);
 });
 
+//Functions
 function sleep(ms) {
   return new Promise((resolve) => setTimeout(resolve, ms));
 }
