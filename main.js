@@ -25,7 +25,7 @@ if (multiplierCost == null || multiplierCost == 0) {
   multiplierCost = 100;
 }
 if (cheaterPunishment == null) {
-  cheaterPunishment = 999999999;
+  cheaterPunishment = 1;
 }
 if (workers == null) {
   workers = 0;
@@ -167,12 +167,18 @@ clearDataButton.addEventListener("click", () => {
     multiplierCost = 100;
     multiplierButton.textContent =
       "+1 Multiplier(Costs " + multiplierCost + " cookies)";
+    workers = 0;
+    workerCost = 250;
+    workerText.textContent = "Workers = " + workers;
+    workerButton.textContent = "+1 Worker(Costs " + workerCost + " cookies)";
     cheater = false;
     cheaterPunishment = 1;
     if (adminButtonOne) adminButtonOne.remove();
     if (adminButtonTwo) adminButtonTwo.remove();
     admin = false;
     window.alert("All your data has been cleared");
+  } else {
+    alert("Your data has not been cleared.");
   }
 });
 
