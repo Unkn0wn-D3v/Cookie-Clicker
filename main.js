@@ -71,8 +71,7 @@ multiplierText.textContent = "Multiplier = " + multiplier + "x";
 multiplierButton.textContent =
   "+1 Multiplier(Costs " + multiplierCost + " cookies)";
 workerButton.textContent = "+1 Worker(Costs " + workerCost + " cookies)";
-//workerText.textContent = "Workers = " + workers;
-workerText.textContent = workers;
+workerText.textContent = "Workers = " + workers;
 
 //"Cheater" check
 if (cheater == true) {
