@@ -129,7 +129,11 @@ epilepsyButton.addEventListener("click", () => {
 });
 
 //Cookie button
-cookieButton.addEventListener("click", () => {
+cookieButton.addEventListener("mousedown", () => {
+  e;
+});
+
+cookieButton.addEventListener("mouseup", () => {
   if (cookieDebounce == false) {
     cookieDebounce = true;
     cookies = cookies + 1 * multiplier;
@@ -236,20 +240,20 @@ adminButton.addEventListener("click", () => {
       window.alert("Incorrect password!");
     }
   }
+});
 
-  //Worker button
-  workerButton.addEventListener("click", () => {
-    if (cookies >= workerCost) {
-      workers = workers + 1;
-      cookies = cookies - workerCost;
-      workerCost = workerCost * 3;
-      workerText.textContent = "Workers: " + workers;
-      workerButton.textContent = "+1 Worker(Costs " + workerCost + " cookies)";
-      cookieText.textContent = "Cookies = " + cookies;
+//Worker button
+workerButton.addEventListener("click", () => {
+  if (cookies >= workerCost) {
+    workers = workers + 1;
+    cookies = cookies - workerCost;
+    workerCost = workerCost * 3;
+    workerText.textContent = "Workers: " + workers;
+    workerButton.textContent = "+1 Worker(Costs " + workerCost + " cookies)";
+    cookieText.textContent = "Cookies = " + cookies;
 
-      alert("Purchased a worker");
-    }
-  });
+    alert("Purchased a worker");
+  }
 });
 
 /*
