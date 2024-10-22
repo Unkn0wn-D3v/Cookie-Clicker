@@ -235,7 +235,7 @@ adminButton.addEventListener("click", () => {
   //Worker button
   workerButton.addEventListener("click", () => {
     if (cookies >= workerCost) {
-      workers += 1;
+      workers = workers + 1;
       cookies -= workerCost;
       workerCost = workerCost * 2;
       workerText.textContent = "Workers: " + workers;
