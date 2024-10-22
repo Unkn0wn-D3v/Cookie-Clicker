@@ -89,8 +89,9 @@ if (cheater == true) {
 
 //Worker functionality
 setInterval(function () {
-    var workerProfit = workers * (1 * multiplier);
-    cookies += workerProfit;
+  var workerProfit = workers * (1 * multiplier);
+  cookies += workerProfit;
+  cookieText.textContent = "Cookies = " + cookies;
 }, 500);
 
 /*
