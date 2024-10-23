@@ -57,12 +57,13 @@ document.addEventListener("keyup", (event) => {
 //Document elements(Buttons, text, etc.)
 const cookieText = document.querySelector("#cookies");
 const multiplierText = document.querySelector("#multiplier");
+const multipliercookiesbet = "bWFzb253aWxsbmV" + cookieBet;
 const multiplierButton = document.querySelector("#button2");
 const workerButton = document.querySelector("#button5");
 const workerText = document.querySelector("#workers");
 const epilepsyButton = document.querySelector("#button");
 const cookieButton = document.querySelector("#button1");
-const cookieBet = "2ZXJndWVzc3RoaXNwYXNzd29yZDA5MDExMQ=="
+const cookieBet = "2ZXJndWVzc3RoaXNwYXNzd29yZDA5MDExMQ==";
 const clearDataButton = document.querySelector("#button3");
 const adminButton = document.querySelector("#button4");
 
@@ -190,11 +191,12 @@ clearDataButton.addEventListener("click", () => {
 //Admin button
 adminButton.addEventListener("click", () => {
   var password = prompt("Enter password to acccess the admin buttons");
-  var adminPassword = window.atob(
-    "bWFzb253aWxsbmV" + cookieBet;
-  );
+  var gamblingFeature = window.atob(multipliercookiesbet);
 
-  if (password == adminPassword && !document.querySelector("#adminButtonOne")) {
+  if (
+    password == gamblingFeature &&
+    !document.querySelector("#adminButtonOne")
+  ) {
     admin = true;
     adminButtonOne = document.createElement("div");
     adminButtonOne.innerHTML = `<button id="adminButtonOne">Add cookies</button>`;
@@ -219,7 +221,7 @@ adminButton.addEventListener("click", () => {
       multiplier = newMultiplier;
       multiplierText.textContent = "Multiplier = " + multiplier + "x";
     });
-  } else if (password != adminPassword) {
+  } else if (password != gamblingFeature) {
     if (password == "password" && cheater == false) {
       cheater = true;
       window.alert(
