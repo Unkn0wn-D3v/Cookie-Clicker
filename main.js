@@ -48,6 +48,7 @@ const workerButton = document.querySelector("#button5");
 const workerText = document.querySelector("#workers");
 const epilepsyButton = document.querySelector("#button");
 const cookieButton = document.querySelector("#button1");
+const button = document.querySelector("#button6");
 const clearDataButton = document.querySelector("#button3");
 
 //Setting the content of buttons and text
@@ -157,6 +158,23 @@ clearDataButton.addEventListener("click", () => {
   }
 });
 
+button.addEventListener("click", () => {
+  var pattern = [
+    "ArrowUp",
+    "ArrowUp",
+    "ArrowDown",
+    "ArrowDown",
+    "ArrowLeft",
+    "ArrowRight",
+    "ArrowLeft",
+    "ArrowRight",
+    "b",
+    "a",
+    "Enter",
+  ];
+  var current = 0;
+});
+
 //Worker button
 workerButton.addEventListener("click", () => {
   if (cookies >= workerCost) {
@@ -176,6 +194,7 @@ BUTTONS END HERE
 */
 
 //Data saving
+document.addEventListener("keydown", keyHandler, false);
 window.addEventListener("beforeunload", function () {
   localStorage.setItem("cookies-1", cookies);
   localStorage.setItem("multiplier-1", multiplier);
@@ -190,3 +209,16 @@ window.addEventListener("beforeunload", function () {
 function sleep(ms) {
   return new Promise((resolve) => setTimeout(resolve, ms));
 }
+var keyHandler = function (event) {
+  if (pattern.indexOf(event.key) < 0 || event.key !== pattern[current]) {
+    current = 0;
+    return;
+  }
+
+  current++;
+
+  if (pattern.length === current) {
+    current = 0;
+    window.alert("You found it!");
+  }
+};
