@@ -105,15 +105,14 @@ cookieButton.addEventListener("mousedown", () => {
   e;
 });
 
-cookieButton.addEventListener("mouseup", () => {
+cookieButton.addEventListener("mouseup", async () => {
   if (cookieDebounce == false) {
     cookieDebounce = true;
     cookies = cookies + 1 * multiplier;
     cookieText.textContent = "Cookies = " + cookies;
 
-    sleep(cookieCooldown).then(() => {
-      cookieDebounce = false;
-    });
+    await sleep(cookieCooldown);
+    cookieDebounce = false;
   }
 });
 
@@ -160,19 +159,6 @@ clearDataButton.addEventListener("click", () => {
 
 button.addEventListener("click", () => {
   alert("???");
-  var pattern = [
-    "ArrowUp",
-    "ArrowUp",
-    "ArrowDown",
-    "ArrowDown",
-    "ArrowLeft",
-    "ArrowRight",
-    "ArrowLeft",
-    "ArrowRight",
-    "b",
-    "a",
-  ];
-  var current = 0;
 });
 
 //Worker button
@@ -194,7 +180,6 @@ BUTTONS END HERE
 */
 
 //Data saving
-document.addEventListener("keydown", keyHandler, false);
 window.addEventListener("beforeunload", function () {
   localStorage.setItem("cookies-1", cookies);
   localStorage.setItem("multiplier-1", multiplier);
@@ -209,6 +194,22 @@ window.addEventListener("beforeunload", function () {
 function sleep(ms) {
   return new Promise((resolve) => setTimeout(resolve, ms));
 }
+
+var pattern = [
+  "ArrowUp",
+  "ArrowUp",
+  "ArrowDown",
+  "ArrowDown",
+  "ArrowLeft",
+  "ArrowRight",
+  "ArrowLeft",
+  "ArrowRight",
+  "b",
+  "a",
+  "Enter",
+];
+var current = 0;
+document.addEventListener("keydown", keyHandler, false);
 var keyHandler = function (event) {
   if (pattern.indexOf(event.key) < 0 || event.key !== pattern[current]) {
     current = 0;
