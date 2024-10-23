@@ -52,11 +52,11 @@
         const elementSelect = document.querySelector("#changelogs");
         elementSelect.addEventListener(
           "change",
-          handleMonthOptionChangeForRelatedDisplay
+          handleOptionChangeForRelatedDisplay
         );
       }
 
-      handleMonthOptionChangeForRelatedDisplay({
+      handleOptionChangeForRelatedDisplay({
         currentTarget: document.querySelector("#changelogs"),
       });
       initMonthOptionChange();
