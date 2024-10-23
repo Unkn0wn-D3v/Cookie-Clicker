@@ -1,18 +1,13 @@
 //Variables/data loading
 var cancelled = false;
-var admin = false;
 var cookieDebounce = false;
 var cookieCooldown = 25;
-var cheater = localStorage.getItem("cheater-1");
-var cheaterPunishment = Number(localStorage.getItem("cheaterPunishment-1"));
 
 var cookies = Number(localStorage.getItem("cookies-1"));
 var multiplier = Number(localStorage.getItem("multiplier-1"));
 var multiplierCost = Number(localStorage.getItem("multiplierCost-1"));
 var workers = Number(localStorage.getItem("workers-1"));
 var workerCost = Number(localStorage.getItem("workerCost-1"));
-
-let adminButtonOne, adminButtonTwo;
 
 //New player check
 if (cookies == null) {
@@ -24,21 +19,12 @@ if (multiplier == null || multiplier == 0) {
 if (multiplierCost == null || multiplierCost == 0) {
   multiplierCost = 100;
 }
-if (cheaterPunishment == null) {
-  cheaterPunishment = 1;
-}
 if (workers == null) {
   workers = 0;
 }
 
 if (workerCost == null || workerCost == 0) {
   workerCost = 250;
-}
-
-if (cheater == null || cheater == "false") {
-  cheater = false;
-} else if (cheater == "true") {
-  cheater = true;
 }
 
 //Cookie click cooldown
@@ -57,15 +43,12 @@ document.addEventListener("keyup", (event) => {
 //Document elements(Buttons, text, etc.)
 const cookieText = document.querySelector("#cookies");
 const multiplierText = document.querySelector("#multiplier");
-const multipliercookiesbet = "bWFzb253aWxsbmV" + cookieBet;
 const multiplierButton = document.querySelector("#button2");
 const workerButton = document.querySelector("#button5");
 const workerText = document.querySelector("#workers");
 const epilepsyButton = document.querySelector("#button");
 const cookieButton = document.querySelector("#button1");
-const cookieBet = "2ZXJndWVzc3RoaXNwYXNzd29yZDA5MDExMQ==";
 const clearDataButton = document.querySelector("#button3");
-const adminButton = document.querySelector("#button4");
 
 //Setting the content of buttons and text
 cookieText.textContent = "Cookies = " + cookies;
@@ -74,20 +57,6 @@ multiplierButton.textContent =
   "+1 Multiplier(Costs " + multiplierCost + " cookies)";
 workerButton.textContent = "+1 Worker(Costs " + workerCost + " cookies)";
 workerText.textContent = "Workers = " + workers;
-
-//"Cheater" check
-if (cheater == true) {
-  window.alert(
-    "You really thought you could get away? Your losses have been doubled."
-  );
-  cheaterPunishment += 1;
-  setInterval(function () {
-    if (cheater == true) {
-      cookies -= cheaterPunishment * multiplier;
-      cookieText.textContent = "Cookies = " + cookies;
-    }
-  }, 1);
-}
 
 //Worker functionality
 setInterval(function () {
