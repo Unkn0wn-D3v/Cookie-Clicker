@@ -170,7 +170,6 @@ button.addEventListener("click", () => {
     "ArrowRight",
     "b",
     "a",
-    "Enter",
   ];
   var current = 0;
 });
