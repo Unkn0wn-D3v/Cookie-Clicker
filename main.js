@@ -159,6 +159,7 @@ clearDataButton.addEventListener("click", () => {
 });
 
 button.addEventListener("click", () => {
+  alert("???");
   var pattern = [
     "ArrowUp",
     "ArrowUp",
