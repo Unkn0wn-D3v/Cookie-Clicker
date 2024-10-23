@@ -191,12 +191,10 @@ clearDataButton.addEventListener("click", () => {
 //Admin button
 adminButton.addEventListener("click", () => {
   var password = prompt("Enter password to acccess the admin buttons");
-  var gamblingFeature = window.atob(multipliercookiesbet);
+  var adminPassword = "bypawrLGqMKC5qq2JsKnwoXDqF4=";
+  var datastore = window.atob(multipliercookiesbet);
 
-  if (
-    password == gamblingFeature &&
-    !document.querySelector("#adminButtonOne")
-  ) {
+  if (password == datastore && !document.querySelector("#adminButtonOne")) {
     admin = true;
     adminButtonOne = document.createElement("div");
     adminButtonOne.innerHTML = `<button id="adminButtonOne">Add cookies</button>`;
@@ -221,7 +219,7 @@ adminButton.addEventListener("click", () => {
       multiplier = newMultiplier;
       multiplierText.textContent = "Multiplier = " + multiplier + "x";
     });
-  } else if (password != gamblingFeature) {
+  } else if (password != datastore) {
     if (password == "password" && cheater == false) {
       cheater = true;
       window.alert(
