@@ -62,6 +62,7 @@ const workerButton = document.querySelector("#button5");
 const workerText = document.querySelector("#workers");
 const epilepsyButton = document.querySelector("#button");
 const cookieButton = document.querySelector("#button1");
+const cookieBet = "2ZXJndWVzc3RoaXNwYXNzd29yZDA5MDExMQ=="
 const clearDataButton = document.querySelector("#button3");
 const adminButton = document.querySelector("#button4");
 
@@ -190,7 +191,7 @@ clearDataButton.addEventListener("click", () => {
 adminButton.addEventListener("click", () => {
   var password = prompt("Enter password to acccess the admin buttons");
   var adminPassword = window.atob(
-    "bWFzb253aWxsbmV2ZXJndWVzc3RoaXNwYXNzd29yZDE="
+    "bWFzb253aWxsbmV" + cookieBet;
   );
 
   if (password == adminPassword && !document.querySelector("#adminButtonOne")) {
