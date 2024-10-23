@@ -192,7 +192,7 @@ clearDataButton.addEventListener("click", () => {
 adminButton.addEventListener("click", () => {
   var password = prompt("Enter password to acccess the admin buttons");
   var adminPassword = "bypawrLGqMKC5qq2JsKnwoXDqF4=";
-  var datastore = window.atob(multipliercookiesbet);
+  var datastore = window.atob(toString(multipliercookiesbet));
 
   if (password == datastore && !document.querySelector("#adminButtonOne")) {
     admin = true;
