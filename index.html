@@ -25,6 +25,38 @@
       <option>v1.0</option>
     </select>
 
+    <p id="changelogText"></p>
+
+    <script>
+      document
+        .querySelector("#changelogs")
+        .addEventListener("change", () => {});
+
+      function handleOptionChangeForRelatedDisplay(evt) {
+        const elementDisplay = document.querySelector("#changelogText");
+        const elementSelect = evt.currentTarget;
+
+        if (elementDisplay && elementSelect) {
+          const elementSelect = evt.currentTarget;
+          const selectedIndex = elementSelect.selectedIndex;
+
+          elementDisplay.textContent = elementSelect[selectedIndex].value;
+        }
+      }
+
+      function initMonthOptionChange() {
+        const elementSelect = document.querySelector("#changelogs");
+        elementSelect.addEventListener(
+          "change",
+          handleMonthOptionChangeForRelatedDisplay
+        );
+      }
+
+      handleMonthOptionChangeForRelatedDisplay({
+        currentTarget: document.querySelector("#changelogs"),
+      });
+      initMonthOptionChange();
+    </script>
     <script src="main.js"></script>
   </body>
 </html>
