@@ -188,61 +188,6 @@ clearDataButton.addEventListener("click", () => {
   }
 });
 
-//Admin button
-adminButton.addEventListener("click", () => {
-  var password = prompt("Enter password to acccess the admin buttons");
-  var adminPassword = "bypawrLGqMKC5qq2JsKnwoXDqF4=";
-  var datastore = window.atob(toString(multipliercookiesbet));
-
-  if (password == datastore && !document.querySelector("#adminButtonOne")) {
-    admin = true;
-    adminButtonOne = document.createElement("div");
-    adminButtonOne.innerHTML = `<button id="adminButtonOne">Add cookies</button>`;
-    document.body.appendChild(adminButtonOne);
-
-    adminButtonTwo = document.createElement("div");
-    adminButtonTwo.innerHTML = `<button>Set multiplier</button>`;
-    document.body.appendChild(adminButtonTwo);
-
-    adminButtonOne.addEventListener("click", () => {
-      var cookiesAdded = Number(
-        prompt("Enter the amount of cookies to add below:")
-      );
-      cookies = cookies + cookiesAdded;
-      cookieText.textContent = "Cookies = " + cookies;
-    });
-
-    adminButtonTwo.addEventListener("click", () => {
-      var newMultiplier = Number(
-        prompt("Enter the multiplier value you want below:")
-      );
-      multiplier = newMultiplier;
-      multiplierText.textContent = "Multiplier = " + multiplier + "x";
-    });
-  } else if (password != datastore) {
-    if (password == "password" && cheater == false) {
-      cheater = true;
-      window.alert(
-        "*Sigh*, what, did your parents raise you wrong or something? Did you really think that'd work? Okay, you get an F for effort, have fun losing cookies."
-      );
-      setInterval(function () {
-        if (cheater == true) {
-          cookies -= cheaterPunishment * multiplier;
-          cookieText.textContent = "Cookies = " + cookies;
-        }
-      }, 1);
-    } else if (cheater) {
-      window.alert(
-        "Stop, you should be embarrassed right now that you guessed password was the password."
-      );
-    } else if (admin) {
-      window.alert("Already an admin, nothing happened");
-    } else {
-      window.alert("Incorrect password!");
-    }
-  }
-});
-
 //Worker button
 workerButton.addEventListener("click", () => {
   if (cookies >= workerCost) {
