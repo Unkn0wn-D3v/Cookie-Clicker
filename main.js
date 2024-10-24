@@ -3,11 +3,14 @@ var cancelled = false;
 var cookieDebounce = false;
 var cookieCooldown = 25;
 
-var cookies = Number(localStorage.getItem("cookies-1"));
-var multiplier = Number(localStorage.getItem("multiplier-1"));
-var multiplierCost = Number(localStorage.getItem("multiplierCost-1"));
-var workers = Number(localStorage.getItem("workers-1"));
-var workerCost = Number(localStorage.getItem("workerCost-1"));
+var cookies = BigInt(localStorage.getItem("cookies-1"));
+var multiplier = BigInt(localStorage.getItem("multiplier-1"));
+var multiplierCost = BigInt(localStorage.getItem("multiplierCost-1"));
+var workers = BigInt(localStorage.getItem("workers-1"));
+var workerCost = BigInt(localStorage.getItem("workerCost-1"));
+
+//Keydown event
+document.addEventListener("keydown", keyHandler, false);
 
 //New player check
 if (cookies == null) {
@@ -123,7 +126,7 @@ multiplierButton.addEventListener("click", () => {
     multiplierText.textContent = "Multiplier = " + multiplier + "x";
     cookies = cookies - multiplierCost;
     cookieText.textContent = "Cookies = " + cookies;
-    multiplierCost *= multiplierCost;
+    multiplierCost ** 1.1;
     multiplierButton.textContent =
       "+1 Multiplier(Costs " + multiplierCost + " cookies)";
   }
@@ -209,7 +212,6 @@ var pattern = [
   "Enter",
 ];
 var current = 0;
-document.addEventListener("keydown", keyHandler, false);
 var keyHandler = function (event) {
   if (pattern.indexOf(event.key) < 0 || event.key !== pattern[current]) {
     current = 0;
