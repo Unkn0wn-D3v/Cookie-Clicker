@@ -7,15 +7,14 @@
     <link rel="icon" type="image/x-icon" href="images/favicon.ico" />
   </head>
   <body class="backgroundcolored">
-    <button id="button1" class="cookie centered">
+    <button id="button1" class="invis centered">
       <img src="images/cookie.png" width="505" height="494" /></button
     ><br />
     <button id="button" class="">Epilepsy Machine</button>
     <button id="button2" class="">+1 Multiplier(Costs 100 cookies)</button>
     <button id="button3" class="">Clear all data</button>
-    <button id="button4" class="">Admin Shenanigans</button>
     <button id="button5" class="">+1 Worker(Costs 250 cookies)</button>
-    <button id="button6" class="cookie">.</button>
+    <button id="button6" class="invis">There is a button right here</button>
     <p id="cookies" class="">Cookies = 0</p>
     <p id="multiplier" class="">Multiplier = 1x</p>
     <p id="workers" class="">Workers = 0</p>
@@ -24,13 +23,9 @@
     <label for="changelogs">Changelogs</label>
     <select name="changelogs" id="changelogs">
       <option value="" selected>None</option>
-      <option value="-Game was created">v1.0</option>
-      <option value="-Added workers">v1.1</option>
-      <option
-        value="-Added Changelogs \n -Balanced multiplier prices \n -Removed a bug where spamming cookie fast enough would break the game"
-      >
-        v1.2
-      </option>
+      <option value="v1.0">v1.0</option>
+      <option value="v1.1">v1.1</option>
+      <option value="v1.2">v1.2</option>
     </select>
 
     <p id="changelogText"></p>
@@ -48,7 +43,23 @@
           const elementSelect = evt.currentTarget;
           const selectedIndex = elementSelect.selectedIndex;
 
-          elementDisplay.textContent = elementSelect[selectedIndex].value;
+          switch (elementSelect[selectedIndex].value) {
+            case "v1.0":
+              elementDisplay.innerHTML = "-Game was created";
+              break;
+            case "v1.1":
+              elementDisplay.innerHTML = "-Added workers";
+              break;
+            case "v1.2":
+              elementDisplay.innerHTML =
+                "-Fixed cookie spam bug <br> -Added changelogs";
+              break;
+            case "":
+              break;
+            default:
+              window.alert("No changelogs were found for this version.");
+          }
+          //elementDisplay.textContent = elementSelect[selectedIndex].value;
         }
       }
 
