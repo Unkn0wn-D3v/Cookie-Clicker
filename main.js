@@ -1,5 +1,4 @@
 window.addEventListener("DOMContentLoaded", function () {
-  this.alert("DOM Content loaded.");
   //Variables/data loading
   var cancelled = false;
   var cookieDebounce = false;
