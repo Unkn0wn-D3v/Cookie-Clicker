@@ -166,13 +166,11 @@ BUTTONS END HERE
 
   //Data saving
   window.addEventListener("beforeunload", function () {
-    localStorage.setItem("cookies-1", cookies);
-    localStorage.setItem("multiplier-1", multiplier);
-    localStorage.setItem("multiplierCost-1", multCost);
-    localStorage.setItem("cheater-1", cheater);
-    localStorage.setItem("cheaterPunishment-1", cheaterPunishment);
-    localStorage.setItem("workers-1", workers);
-    localStorage.setItem("workerCost-1", workerCost);
+    localStorage.setItem("cookies-1", BigInt(cookies));
+    localStorage.setItem("multiplier-1", BigInt(multiplier));
+    localStorage.setItem("multiplierCost-1", BigInt(multCost));
+    localStorage.setItem("workers-1", BigInt(workers));
+    localStorage.setItem("workerCost-1", BigInt(workerCost));
   });
 
   //Functions
