@@ -104,10 +104,7 @@ BUTTONS START HERE
       multiplierText.textContent = "Multiplier = " + multiplier + "x";
       cookies = cookies - multCost;
       cookieText.textContent = "Cookies = " + cookies;
-      // x ^ (a + b) = x^a * b^b
-      // BigInt ^ 1 * BigInt ^ 0.3 = BigInt ^ 1.3
-      // BigInt * Number(BigInt) ^ 0.3
-      multCost = BigInt(Number(multCost) ** 1.3);
+      multCost = BigInt(Math.floor(Number(multCost) ** 1.3));
       multiplierButton.textContent =
         "x2 Multiplier(Costs " + multCost + " cookies)";
     }
