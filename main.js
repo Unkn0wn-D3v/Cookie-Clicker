@@ -1,32 +1,21 @@
 window.addEventListener("DOMContentLoaded", function () {
+  this.alert("DOM Content loaded.");
   //Variables/data loading
   var cancelled = false;
   var cookieDebounce = false;
   var cookieCooldown = 25;
 
-  var cookies = BigInt(localStorage.getItem("cookies-1"));
-  var multiplier = BigInt(localStorage.getItem("multiplier-1"));
-  var multiplierCost = BigInt(localStorage.getItem("multiplierCost-1"));
-  var workers = BigInt(localStorage.getItem("workers-1"));
-  var workerCost = BigInt(localStorage.getItem("workerCost-1"));
+  var cookies = localStorage.getItem("cookies-1") ?? BigInt(0);
+  var multiplier = localStorage.getItem("multiplier-1") ?? BigInt(1);
+  var multCost = localStorage.getItem("multiplierCost-1") ?? BigInt(100);
+  var workers = localStorage.getItem("workers-1") ?? BigInt(0);
+  var workerCost = localStorage.getItem("workerCost-1") ?? BigInt(250);
 
-  //New player check
-  if (cookies == null) {
-    cookies = 0;
-  }
-  if (multiplier == null || multiplier == 0) {
-    multiplier = 1;
-  }
-  if (multiplierCost == null || multiplierCost == 0) {
-    multiplierCost = 100;
-  }
-  if (workers == null) {
-    workers = 0;
-  }
-
-  if (workerCost == null || workerCost == 0) {
-    workerCost = 250;
-  }
+  if (typeof cookies != BigInt) cookies = BigInt(cookies);
+  if (typeof multiplier != BigInt) multiplier = BigInt(multiplier);
+  if (typeof multCost != BigInt) multCost = BigInt(multCost);
+  if (typeof workers != BigInt) workers = BigInt(workers);
+  if (typeof workerCost != BigInt) workerCost = BigInt(workerCost);
 
   //Cookie click cooldown
   document.addEventListener("keydown", (event) => {
@@ -42,21 +31,20 @@ window.addEventListener("DOMContentLoaded", function () {
   });
 
   //Document elements(Buttons, text, etc.)
-  const cookieText = document.getElementById("cookies");
-  const multiplierText = document.getElementById("multiplier");
-  const multiplierButton = document.getElementById("button2");
-  const workerButton = document.getElementById("button5");
-  const workerText = document.getElementById("workers");
-  const epilepsyButton = document.getElementById("button");
-  const cookieButton = document.getElementById("button1");
-  const button = document.getElementById("button6");
-  const clearDataButton = document.getElementById("button3");
+  const cookieText = document.querySelector("#cookies");
+  const multiplierText = document.querySelector("#multiplier");
+  const multiplierButton = document.querySelector("#button2");
+  const workerButton = document.querySelector("#button5");
+  const workerText = document.querySelector("#workers");
+  const epilepsyButton = document.querySelector("#button");
+  const cookieButton = document.querySelector("#button1");
+  const clearDataButton = document.querySelector("#button3");
 
   //Setting the content of buttons and text
   cookieText.textContent = "Cookies = " + cookies;
   multiplierText.textContent = "Multiplier = " + multiplier + "x";
   multiplierButton.textContent =
-    "+1 Multiplier(Costs " + multiplierCost + " cookies)";
+    "x2 Multiplier(Costs " + multCost + " cookies)";
   workerButton.textContent = "+1 Worker(Costs " + workerCost + " cookies)";
   workerText.textContent = "Workers = " + workers;
 
@@ -68,7 +56,7 @@ BUTTONS START HERE
   epilepsyButton.addEventListener("click", () => {
     var correctPassword = false;
     cancelled = false;
-    document.body.style.background = "white";
+    document.body.style.background = "darkgrey";
 
     while (correctPassword == false && cancelled == false) {
       var password = prompt(
@@ -96,13 +84,13 @@ BUTTONS START HERE
 
   //Cookie button
   cookieButton.addEventListener("mousedown", () => {
-    e;
+    //Insert stuff here to change the size when clicked
   });
 
   cookieButton.addEventListener("mouseup", async () => {
     if (cookieDebounce == false) {
       cookieDebounce = true;
-      cookies = cookies + 1 * multiplier;
+      cookies = cookies + BigInt(1) * multiplier;
       cookieText.textContent = "Cookies = " + cookies;
 
       await sleep(cookieCooldown);
@@ -112,14 +100,17 @@ BUTTONS START HERE
 
   //Multiplier button
   multiplierButton.addEventListener("click", () => {
-    if (cookies >= multiplierCost) {
-      multiplier = multiplier * 2;
+    if (cookies >= multCost) {
+      multiplier = multiplier * BigInt(2);
       multiplierText.textContent = "Multiplier = " + multiplier + "x";
-      cookies = cookies - multiplierCost;
+      cookies = cookies - multCost;
       cookieText.textContent = "Cookies = " + cookies;
-      multiplierCost ** 1.1;
+      // x ^ (a + b) = x^a * b^b
+      // BigInt ^ 1 * BigInt ^ 0.3 = BigInt ^ 1.3
+      // BigInt * Number(BigInt) ^ 0.3
+      multCost = BigInt(Number(multCost) ** 1.3);
       multiplierButton.textContent =
-        "+1 Multiplier(Costs " + multiplierCost + " cookies)";
+        "x2 Multiplier(Costs " + multCost + " cookies)";
     }
   });
 
@@ -131,22 +122,17 @@ BUTTONS START HERE
 
     if (boolean == true) {
       localStorage.clear();
-      cookies = 0;
+      cookies = BigInt(0);
       cookieText.textContent = "Cookies = " + cookies;
-      multiplier = 1;
+      multiplier = BigInt(1);
       multiplierText.textContent = "Multiplier = " + multiplier + "x";
-      multiplierCost = 100;
+      multCost = BigInt(100);
       multiplierButton.textContent =
-        "+1 Multiplier(Costs " + multiplierCost + " cookies)";
-      workers = 0;
-      workerCost = 250;
+        "x2 Multiplier(Costs " + multCost + " cookies)";
+      workers = BigInt(0);
+      workerCost = BigInt(250);
       workerText.textContent = "Workers = " + workers;
       workerButton.textContent = "+1 Worker(Costs " + workerCost + " cookies)";
-      cheater = false;
-      cheaterPunishment = 1;
-      if (adminButtonOne) adminButtonOne.remove();
-      if (adminButtonTwo) adminButtonTwo.remove();
-      admin = false;
       window.alert("All your data has been cleared");
     } else {
       alert("Your data has not been cleared.");
@@ -160,9 +146,9 @@ BUTTONS START HERE
   //Worker button
   workerButton.addEventListener("click", () => {
     if (cookies >= workerCost) {
-      workers = workers + 1;
+      workers = workers + BigInt(1);
       cookies = cookies - workerCost;
-      workerCost = workerCost * 3;
+      workerCost = workerCost * BigInt(3);
       workerText.textContent = "Workers: " + workers;
       workerButton.textContent = "+1 Worker(Costs " + workerCost + " cookies)";
       cookieText.textContent = "Cookies = " + cookies;
@@ -186,7 +172,7 @@ BUTTONS END HERE
   window.addEventListener("beforeunload", function () {
     localStorage.setItem("cookies-1", cookies);
     localStorage.setItem("multiplier-1", multiplier);
-    localStorage.setItem("multiplierCost-1", multiplierCost);
+    localStorage.setItem("multiplierCost-1", multCost);
     localStorage.setItem("cheater-1", cheater);
     localStorage.setItem("cheaterPunishment-1", cheaterPunishment);
     localStorage.setItem("workers-1", workers);
