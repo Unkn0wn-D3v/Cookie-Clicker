@@ -166,11 +166,11 @@ BUTTONS END HERE
 
   //Data saving
   window.addEventListener("beforeunload", function () {
+    localStorage.setItem("workers-1", BigInt(workers));
+    localStorage.setItem("workerCost-1", BigInt(workerCost));
     localStorage.setItem("cookies-1", BigInt(cookies));
     localStorage.setItem("multiplier-1", BigInt(multiplier));
     localStorage.setItem("multiplierCost-1", BigInt(multCost));
-    localStorage.setItem("workers-1", BigInt(workers));
-    localStorage.setItem("workerCost-1", BigInt(workerCost));
   });
 
   //Functions
