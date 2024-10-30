@@ -159,7 +159,7 @@ BUTTONS END HERE
 
   //Worker functionality
   setInterval(function () {
-    var workerProfit = workers * (1 * multiplier);
+    var workerProfit = workers * (BigInt(1) * multiplier);
     cookies += workerProfit;
     cookieText.textContent = "Cookies = " + cookies;
   }, 500);
